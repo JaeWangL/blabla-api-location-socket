@@ -12,7 +12,7 @@ export class LocationService {
   }
 
   async upsertAsync(deviceType: 1 | 2, deviceId: string, latitude: number, longitude: number): Promise<void> {
-    const existing = this.entityRepo.findByDeviceTypeAndDeviceIdAsync(deviceType, deviceId);
+    const existing = await this.entityRepo.findByDeviceTypeAndDeviceIdAsync(deviceType, deviceId);
     if (!existing) {
       await this.entityRepo.createAsync({
         id: new ObjectId().toString(),
