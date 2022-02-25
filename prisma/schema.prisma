@@ -1,0 +1,17 @@
+datasource db {
+  provider = "mongodb"
+  url      = env("DATABASE_URL")
+}
+
+generator client {
+  provider = "prisma-client-js"
+  previewFeatures = ["mongoDb"]
+}
+
+model Locations {
+  id           String @id @map("_id") @db.ObjectId
+  device_type  Int
+  device_id    String
+  latitude 	   Decimal
+  longitude    Decimal
+}
